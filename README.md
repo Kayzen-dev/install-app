@@ -200,8 +200,12 @@ Server Laravel kini bisa dijalankan melalui `index.php` secara otomatis. Kunjung
 Happy coding! 💻✨
 
 ```
-
+Buat file crown.bat dan nanti di convert ke .exe
 ---
-
-Anda cukup **salin dan tempel** seluruh teks di atas ke file `README.md` di dalam repositori proyek Anda. Jika Anda butuh versi dalam bahasa Inggris, dengan gambar atau diagram, saya juga siap bantu.
+@echo off
+start wsl
+timeout /t 5
+start "" "http://localhost"
+timeout /t 3
+powershell -command "$wshell = New-Object -ComObject wscript.shell; $wshell.SendKeys('{F11}')"
 ```
