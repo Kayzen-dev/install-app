@@ -44,6 +44,10 @@ sudo chmod -R 755 /var/www/html
 sudo chown -R www-data:www-data /var/www/html
 sudo systemctl restart apache2
 ```
+* Jika perintah di atas tidak berhasil
+```bash
+sudo usermod -aG crown www-data
+```
 
 ### 🔹 Wajib: Install Modul PHP Apache
 
