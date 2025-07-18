@@ -1,4 +1,3 @@
-Tentu! Berikut adalah **README.md** yang lengkap, rapi, profesional, dan langsung siap pakai. Sudah dalam format Markdown dan berbahasa Indonesia, dibuat agar mudah dibaca dan diikuti:
 
 ---
 
@@ -200,7 +199,7 @@ Server Laravel kini bisa dijalankan melalui `index.php` secara otomatis. Kunjung
 ### 🧾 Fase Ke 2
 
 * FASE 2, INSTALASI APP :
-* CLONE GITHUB
+* CLONE GITHUB : `https://github.com/KYZ1-DEV/app-hotel.git`
 * `COMPOSER INSTALL`
 *  `NPM INSTALL`
 *  `NPM RUN BUILD`
