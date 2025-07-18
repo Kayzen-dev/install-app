@@ -68,7 +68,7 @@ sudo a2enmod php8.3
 
 ---
 
-## 📂 3. Setup index.php untuk Menjalankan Laravel
+## 📂 3. Setup index.php untuk Menjalankan Laravel setelah melakukan fase 2
 
 1. Buat file `index.php` di `/var/www/html` dengan isi berikut:
 
@@ -197,7 +197,24 @@ Server Laravel kini bisa dijalankan melalui `index.php` secara otomatis. Kunjung
 
 ---
 
-Happy coding! 💻✨
+### 🧾 Fase Ke 2
+
+* FASE 2, INSTALASI APP :
+* CLONE GITHUB
+* `COMPOSER INSTALL`
+*  `NPM INSTALL`
+*  `NPM RUN BUILD`
+*  `PHP ARTISAN STORAGE:LINK`
+*  `CP .ENV.EXAMPLE .ENV`
+*  `PHP ARTISAN KEY:GENERATE`
+*  `PHP ARTISAN MIGRATE --SEED`
+*  `PHP ARTISAN SER`
+*  `TESTING`
+
+
+---
+
+Selanjutnya setelah semua fase 😁😁
 
 ```
 Buat file crown.bat dan nanti di convert ke .exe
