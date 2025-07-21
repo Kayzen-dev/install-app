@@ -40,14 +40,12 @@ sudo apt install build-essential curl git
 ### 🔹 Konfigurasi Akses Folder Apache
 
 ```bash
-sudo chmod -R 755 /var/www/html
-sudo chown -R www-data:www-data /var/www/html
+bash
+sudo chmod o+x /home/crown  // Ganti sesuai nana usersname ubuntunya
+
 sudo systemctl restart apache2
 ```
-* Jika perintah di atas tidak berhasil
-```bash
-sudo usermod -aG crown www-data
-```
+* agar Apache bisa *masuk* ke direktori itu.
 
 ### 🔹 Wajib: Install Modul PHP Apache
 
@@ -97,6 +95,7 @@ header("Location: http://127.0.0.1:8000");
 exit;
 ?>
 ```
+*atau clone repo ini: https://github.com/Kayzen-dev/index.git
 
 ### 🔧 Perintah Tambahan:
 
@@ -117,12 +116,25 @@ sudo rm -r /var/www/html/index
 
 ```bash
 sudo apt install unzip
+sudo apt update
+sudo apt install -y software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt update
+sudo apt install -y php8.3 php8.3-cli php8.3-fpm php8.3-gd php8.3-mysql php8.3-xml php8.3-mbstring php8.3-zip php8.3-curl php8.3-bcmath php8.3-intl php8.3-json libapache2-mod-php8.3
 
-sudo apt-get install php php-gd php-cli php-fpm php-mysql php-xml php-mbstring php-zip php-curl php-bcmath php-intl php-json
+
+
+sudo apt-get install php php-gd php-cli php-fpm php-mysql php-xml php-mbstring php-zip php-curl php-bcmath php-intl php-json //ini auto versi terbaru
 ```
+5. Verifikasi Versi PHP
+```bash
+php -v
+```
+* Untuk memastikan versi CLI juga sudah ke PHP 8.3:
 
+```bash
+sudo update-alternatives --set php /usr/bin/php8.3
+```
 ---
 
 ## 🌐 5. Instalasi Apache
@@ -133,6 +145,35 @@ sudo systemctl status apache2
 sudo tail -f /var/log/apache2/error.log  # Untuk melihat error log jika ada
 ```
 
+## 🌐 jika Instalasi menggunkaan nginx
+* Konfigurasi Nginx + PHP-FPM
+* Nginx tidak menggunakan module PHP langsung, tapi lewat php8.3-fpm.
+
+* Contoh konfigurasi blok server di Nginx (/etc/nginx/sites-available/namasite):
+```bash
+server {
+    listen 80;
+    server_name namadomain.com;
+    root /var/www/html;
+
+    index index.php index.html index.htm;
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+*Setelah itu:
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+
+```
 ---
 
 ## 🗄️ 6. Instalasi MySQL
